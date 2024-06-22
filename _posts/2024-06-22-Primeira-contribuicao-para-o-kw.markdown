@@ -22,11 +22,11 @@ Os monitores da disciplinas disponibilizaram divesas sugestões para contribuiç
 
 Usango grep -r return, achamos diversos lugares onde não havia comentário nas linhas de retorno, então os adicionamos em vários arquivos. Um exemplo seria mudar 
 
-  return 22
+    return 22
 
 para
 
-  return 22 # EINVAL
+    return 22 # EINVAL
 
 Fizemos essa correção mais 24 vezes em 16 arquivos diferentes, tornando o kw um pouco mais condizente com as regras de coding style.
 
@@ -34,4 +34,4 @@ Fizemos essa correção mais 24 vezes em 16 arquivos diferentes, tornando o kw u
 
 Por fim apenas demos commit nas mudanças, abrimos um PR, e depois de alguns ajustes na mensagem de commit e na descrição, o PR foi [aceito][link-pr].
 
-[link-pr] https://github.com/kworkflow/kworkflow/pull/1112
+[link-pr]: https://github.com/kworkflow/kworkflow/pull/1112
