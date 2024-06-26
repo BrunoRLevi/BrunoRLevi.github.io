@@ -11,11 +11,11 @@ Este artigo é uma exploração da minha segunda experiência contribuindo ao kw
 
 Nessa segunda fase da disciplina, os alunos poderiam decidir fazer uma outra modificação no kernel do linux, ou continuar com o kw. Decidimos continuar com o kw, pois era mais simples já que tinhamos um dos mantenedores como monitor. Essa segunda contribuição foi a primeira de duas contribuições que decidimos fazer.
 
-#Como vou contribuir?
+# Como vou contribuir?
 
 Escolhemos resolver o [issue 1014][link-issue] sobre a falta de mensagens de notificação quando criando imagens, quando fazendo testes de integração, já que essas poderiam ocupar bastante espaço sem o usuário saber.
 
-#Modificação do código
+# Modificação do código
 
 Primeiramente procuramos como o obter o id e tamanho da imagem criada pelo podman, e depois adicionamos as mensagens de warning sobre a distribuição do container sendo criado, o ID da imagem, o caminho para a imagem e o tamanho da imagem. Também adicionamos um código que convertia o tamanho da imagem em bytes para a unidade apropriada, que nesse caso era GB. Além disso adicionamos outro warning informando o usuário do comando para dar clear na cache.
 
@@ -47,13 +47,15 @@ Na criação das imagens adicionamos as seguintes linhas:
 
 Após a criação de todas as imagens adicionamos as seguintes linhas:
 
-    warning ''
-    warning 'To clear all cache, run the command:'
-    warning '- ./run_tests.sh --integration clear-cache'
+    if [[ "$verbose" -eq 1 ]]; then
+      warning ''
+      warning 'To clear all cache, run the command:'
+      warning '- ./run_tests.sh --integration clear-cache'
+    fi
 
 # Finalização da contribuição
 
-Em seguida, demos commit nas mudanças, e abrimos o [PR 1132][link-PR]. Tivemos que fazer várias mudanças desde a versão inicial, como melhorar o coding style, mudar a maneira que as mensagens estavam sendo imprimidas para ficarem mais legíveis, mudar de printf para warning e outras coisas. No momento o PR ainda está aguardando ser aceito.
+Em seguida, demos commit nas mudanças, e abrimos o [PR 1132][link-PR]. Tivemos que fazer várias mudanças desde a versão inicial, como melhorar o coding style, mudar a maneira que as mensagens estavam sendo imprimidas para ficarem mais legíveis, mudar de printf para warning, fazer com que os ultimos warnings apenas fossem impressos se a tag verbose fosse adicionada, e outras coisas. No momento o PR ainda está aguardando ser aceito.
 
 [link-issue]: https://github.com/kworkflow/kworkflow/issues/1014
 [link-PR]: https://github.com/kworkflow/kworkflow/pull/1132
