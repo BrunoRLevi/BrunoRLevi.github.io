@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Primeira experiência com pacotes no debian"
-date:   2024-06-26 19:58:00 -0300
+date:   2024-06-26 23:06:00 -0300
 categories: IME-USP MAC0470-Software_Livre
 ---
 
